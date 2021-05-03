@@ -1,0 +1,107 @@
+{
+    "info":{
+       "_postman_id":"f403817f-87e8-403d-8c7e-f8eba555a9cc",
+       "name":"CoinedOne",
+       "schema":"https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item":[
+       {
+          "name":"new schedule",
+          "id":"e3d31b52-2ceb-4bc6-af9f-2232f7739f3d",
+          "request":{
+             "method":"POST",
+             "header":[
+                
+             ],
+             "body":{
+                "mode":"raw",
+                "raw":"{\n    \"days\": [\"monday\",\"tuesday\",\"friday\"],\n    \"worktime\": [{\"start\":9,\"end\":12},{\"start\":1,\"end\":5}],\n    \"blocklist\": [\"com.facebook.katana\",\"com.instagram.android\",\"com.twitter.android\",\"com.eterno\"],\n    \"weekdaylimit\": [{\"app\":\"com.facebook.katana\",\"duration\": 3},{\"app\":\"com.twitter.android\",\"duration\": 5}],\n    \"weekendlimit\": [{\"app\":\"com.facebook.katana\",\"duration\": 3},{\"app\":\"com.twitter.android\",\"duration\": 5}]\n}",
+                "options":{
+                   "raw":{
+                      "language":"json"
+                   }
+                }
+             },
+             "url":"http://localhost:4040/app/schedule"
+          },
+          "response":[
+             
+          ]
+       },
+       {
+          "name":"get all schedules",
+          "id":"cd376987-a7b8-4c09-a98c-a076dec2d670",
+          "protocolProfileBehavior":{
+             "disableBodyPruning":true
+          },
+          "request":{
+             "method":"GET",
+             "header":[
+                
+             ],
+             "body":{
+                "mode":"raw",
+                "raw":"",
+                "options":{
+                   "raw":{
+                      "language":"json"
+                   }
+                }
+             },
+             "url":"http://localhost:4040/app/all"
+          },
+          "response":[
+             
+          ]
+       },
+       {
+          "name":"remove one schedule",
+          "id":"be58851d-6a2d-4fd7-96f8-ae880483b961",
+          "request":{
+             "method":"DELETE",
+             "header":[
+                
+             ],
+             "body":{
+                "mode":"raw",
+                "raw":"{\n    \"_id\": \"608ed784cf25845b25126be9\"\n}",
+                "options":{
+                   "raw":{
+                      "language":"json"
+                   }
+                }
+             },
+             "url":"http://localhost:4040/app/schedule"
+          },
+          "response":[
+             
+          ]
+       },
+       {
+          "name":"find one schedule",
+          "id":"ab7cfeef-31ed-4b3e-ad4a-d385932134b1",
+          "protocolProfileBehavior":{
+             "disableBodyPruning":true
+          },
+          "request":{
+             "method":"GET",
+             "header":[
+                
+             ],
+             "body":{
+                "mode":"raw",
+                "raw":"{\n    \"_id\": \"608edb4bb7a7e6651e7532b4\"\n}",
+                "options":{
+                   "raw":{
+                      "language":"json"
+                   }
+                }
+             },
+             "url":"http://localhost:4040/app/schedule"
+          },
+          "response":[
+             
+          ]
+       }
+    ]
+ }

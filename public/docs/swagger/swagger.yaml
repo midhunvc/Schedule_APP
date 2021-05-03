@@ -1,0 +1,232 @@
+openapi: 3.0.0
+info:
+  title: Schedule APP CoinedOne
+  version: 1.1.0
+  description: This the Schedule APP from CoinedOne API documentation Submitted by Midhun V C
+  contact:
+    email: mvc2141997@gmail.com
+    name: API Support
+externalDocs:
+  description: Postman collection
+  url: "https://www.getpostman.com/collections/0396d9e701009c84ec31"
+servers:
+  - url: "http://localhost:4040"
+    description: Deployed in localhost
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+paths:
+  /app/schedule:
+    post:
+      summary: Create new Schedule.
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Schedule
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                days:
+                  type: array
+                  items:
+                    type: string
+                  description: Days in a week
+                worktime:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      start:
+                        type: number
+                        description: starting time
+                        example: 9
+                      end:
+                        type: number
+                        description: ending time
+                        example: 12
+                blocklist:
+                  type: array
+                  items:
+                    type: string
+                    example: com.facebook.katana
+                  description: Days in a week
+                weekdaylimit:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      app:
+                        type: string
+                        description: starting time
+                        example: com.facebook.katana
+                      duration:
+                        type: number
+                        description: ending time
+                        example: 3
+                weekendlimit:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      app:
+                        type: string
+                        description: starting time
+                        example: com.facebook.katana
+                      duration:
+                        type: number
+                        description: ending time
+                        example: com.twitter.android
+      responses:
+        "200":
+          description: Schedule created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: new schedule updated
+        "400":
+          description: failed to create schedule
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: failed
+                  message:
+                    type: string
+                    example: failed to create new schedule
+  /app/all:
+    get:
+      summary: Retrieve all schedules
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Schedule
+      responses:
+        "200":
+          description: returned all schedules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  message:
+                    type: string
+                    example: returning all schedules
+        "400":
+          description: failed to return schedules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: failed to find schedules
+  /app/schedule/{id}:
+    get:
+      summary: Retrieve one schedule
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Schedule
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: returned one schedule
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                  message:
+                    type: string
+                    example: returning all schedules
+        "400":
+          description: failed to return schedules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: failed to find schedules
+  /app/schedule/{_id}:
+    delete:
+      summary: delete one schedule
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Schedule
+      parameters:
+        - in: path
+          name: _id
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: Schedule deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: schedule deleted
+        "400":
+          description: Schedule deletion failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: failed
+                  message:
+                    type: string
+                    example: failed to delete
